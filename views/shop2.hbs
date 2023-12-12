@@ -1,0 +1,49 @@
+<div class="welcome-flex">
+    <div class="welcome-left">
+        <h2>Hello नमस्ते <span class="welcome">{{user}}</span> !</h2>
+        <h5 style="font-weight:600">Your stores आपके भंडार : </h5>
+    </div>
+    <div class="welcome-right">
+        <a href="/shop/add">
+            <button type="button" class="btn btn-danger btn-lg" style="background-color:#e51e2a">Add store स्टोर जोड़ें</button>
+        </a>
+    </div>
+</div>
+
+
+
+
+<br>
+{{#if shops}}
+{{#each shops}}
+
+<div class="flex">
+    <div class="shopkeeper-shops" style="padding-bottom:20px">
+        <div class="card" style="width: 25rem; border-left: 6px solid red;">
+            <div class="card-body">
+                <h5 class="card-title" style="color:black;font-weight:bold;font-size:25px">{{shopNameTamil}} </h5>
+                <p class="card-text" style="color:rgb(0, 123, 255);font-weight: 600;font-size:15px">The owner of this shop इस दुकान का मालिक : <span class="welcome">{{owner.tamilName}}</span></p>
+                                <a href="/shop/{{_id}}/edit" class="btn btn-primary item-edit"><i class="fa-sharp fa-solid fa-pen-to-square"></i></a>
+                <a href="/shop/{{_id}}/orders" class="btn btn-primary">Orders आदेश</a>
+                <a href="/shop/explore/{{_id}}" style="margin-left:50px" class="btn btn-dark">Details विवरण</a>
+                <form action="/shop/{{_id}}/delete" method="post" class="shop-del">
+                    <input type="hidden" name="_method" value="delete">
+                    <button type="submit" class="btn btn-danger">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                    </button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{{/each}}
+{{else}}
+    <div>
+        <h1 class="welcome">Stores are not included  स्टोर शामिल नहीं हैं !</h1>
+    </div>
+{{/if}}
+<br>
+<br>
