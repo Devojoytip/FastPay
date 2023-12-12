@@ -1,6 +1,4 @@
 d = {}
-arr = ['அ','ஆ','இ','ஈ','உ','ஊ','எ','ஏ','ஐ','ஒ','ஓ','ஔ','ஃ'];
-arr2 = ['க','ங','ச','ஞ','ட','ண','த','ந','ப','ம','ய','ர','ல','வ','ழ','ள','ற','ன'];
 arr = ['अ','आ','इ','ई','उ','ऊ','ए','ऐ','ओ','औ','अं','अः'];
 arr2 = ['क','ख','ग','घ','ङ','च','छ','ज','झ','ञ','ट','ठ','ड','ढ','ण','त','थ','द','ध','न','प','फ','ब','भ','म','य','र','ल','व','श','ष','स','ह'];
 rank = 1
@@ -14,7 +12,7 @@ function split_words(a){
     temp = []
     for(var i=0;i<a.length;i++){
         unicode = a.charCodeAt(i);
-        if(unicode >= 3006 && unicode <= 3022){
+        if(unicode >= 2309 && unicode <= 2361){
             temp[temp.length - 1] += a[i]
         }
         else{
@@ -46,10 +44,10 @@ function compare(aa,bb){
                         continue;
                     }
                     else{
-                        if(a_letters[i].charCodeAt(1) == 3021){
+                        if(a_letters[i].charCodeAt(1) == 2361){
                             return -1
                         }
-                        if(b_letters[i].charCodeAt(1) == 3021){
+                        if(b_letters[i].charCodeAt(1) == 2361){
                             return 1
                         }
                         return a_letters[i].charCodeAt(1) - b_letters[i].charCodeAt(1)
