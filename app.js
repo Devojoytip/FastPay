@@ -12,7 +12,7 @@ const compare = require('./helper/sort')
 
 // load config
 dotenv.config({
-    path: "./config/config.env"
+    path: "config.env"
 })
 
 // starting express app
