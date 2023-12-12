@@ -31,7 +31,7 @@ module.exports = function(passport){
                 for(var i=2;i<tamilNameArray.length;i++){
                     tamilName += tamilNameArray[i] + " ";
                 }
-                newUser.tamilName = tamilName;
+                newUser.tamilName = await translate(profile.displayName, { to: 'hi' });
                 user = await User.create(newUser);
                 done(null,user);
             }
