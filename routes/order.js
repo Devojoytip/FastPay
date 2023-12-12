@@ -15,15 +15,15 @@ const cart = require('../models/cart')
 let mailTransporter = nodemailer.createTransport({
     service : "gmail",
     auth:{
-        user:"poompugaar.services@gmail.com",
-        pass:"aqvvvsyqxqebaxce",
+        user: process.env.SENDER_EMAIL,
+        pass: process.env.SENDER_PASSKEY,
     }
 })
 
 // @desc : structure of the mail
 let details ={
-    from:"poompugaar.services@gmail.com",
-    subject:"பூம்புகார் ஆர்டர் - Regarding",
+    from:  process.env.SENDER_EMAIL, 
+    subject:"Order - Regarding",
 }
 
 router.post('/:id/ok',ensureAuth,async (req,res) => {
@@ -91,9 +91,9 @@ router.get('/:id/deliver',ensureAuth,async (req,res) => {
     });
     const order = await Cart.findById(req.params.id).populate("shop").lean();
     const order2 = await Cart.findById(req.params.id).populate("user").lean();
-    var mailContent = `உங்களது ஆர்டர் ${order.shop.shopNameEnglish} வழங்கப்பட்டுவிட்டது \n எங்களை தேர்ந்தெடுத்ததற்கு நன்றி !`;
-    var orderDetails = ` ஆர்டர் எண்: ${order._id} \n வாடிக்கையாளர் பெயர்: ${order2.user.displayName} \n தேதி : ${order.createdAt.toLocaleDateString("en-US")} சமயம் : ${order.createdAt.toLocaleTimeString("en-US")} \n கடை பெயர் : ${order.shop.shopNameTamil} \n கடை எண் : ${order.shop.shopPhone}` ;
-    var footer = `\n\n\n\n இப்படிக்கு,\n பூம்புகார் குழு \n `
+    var mailContent = `Your order from ${order.shop.shopNameEnglish} has been provided \n Thank you for choosing us!`;
+    var orderDetails = ` Order no: ${order._id} \n Customer Name: ${order2.user.displayName} \n Date : ${order.createdAt.toLocaleDateString("en-US")} Time : ${order.createdAt.toLocaleTimeString("en-US")} \n Shop Name : ${order.shop.shopNameTamil} \n Shop no : ${order.shop.shopPhone}` ;
+    var footer = `\n\n\n\n Thanks,\n FastPay group \n `
     const to_mail = order2.user.emailId;
     details.to = to_mail;
     details.text = mailContent + '\n' + orderDetails + '\n' + footer;
@@ -135,9 +135,9 @@ router.get('/:id/view',ensureAuth,async (req,res)=>{
 router.get('/:id/alert',ensureAuth,async (req,res)=>{
     const order = await Cart.findById(req.params.id).populate("shop").lean();
     const order2 = await Cart.findById(req.params.id).populate("user").lean();
-    var mailContent = `உங்களது ஆர்டர் ${order.shop.shopNameTamil} தயாராக உள்ளது! `;
-    var orderDetails = ` ஆர்டர் எண்: ${order._id} \n வாடிக்கையாளர் பெயர்: ${order2.user.displayName} \n தேதி : ${order.createdAt.toLocaleDateString("en-US")} சமயம் : ${order.createdAt.toLocaleTimeString("en-US")} \n கடை பெயர் : ${order.shop.shopNameTamil} \n கடை எண் : ${order.shop.shopPhone}` ;
-    var footer = `\n\n\n\n இப்படிக்கு,\n பூம்புகார் குழு \n `
+    var mailContent = `Your order from ${order.shop.shopNameTamil} It's ready! `;
+    var orderDetails = ` Order No: ${order._id} \n Customer Name: ${order2.user.displayName} \n Date : ${order.createdAt.toLocaleDateString("en-US")} Time : ${order.createdAt.toLocaleTimeString("en-US")} \n Shop Name : ${order.shop.shopNameTamil} \n கடை எண் : ${order.shop.shopPhone}` ;
+    var footer = `\n\n\n\n Thanks,\n FastPay group \n `
     const to_mail = order2.user.emailId;
     details.to = to_mail;
     details.text = mailContent + '\n' + orderDetails + '\n' + footer;

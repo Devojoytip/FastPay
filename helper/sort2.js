@@ -3,62 +3,62 @@ arr = ['अ', 'आ', 'इ', 'ई', 'उ', 'ऊ', 'ए', 'ऐ', 'ओ', 'औ', '�
 arr2 = ['क', 'ख', 'ग', 'घ', 'ङ', 'च', 'छ', 'ज', 'झ', 'ञ', 'ट', 'ठ', 'ड', 'ढ', 'ण', 'त', 'थ', 'द', 'ध', 'न', 'प', 'फ', 'ब', 'भ', 'म', 'य', 'र', 'ल', 'व', 'श', 'ष', 'स', 'ह'];
 
 rank = 1
-for (var i = 0; i < arr.length; i++) {
+for(var i =0; i<arr.length; i++){
     d[arr[i]] = rank++;
 }
-for (var i = 0; i < arr2.length; i++) {
+for(var i =0; i<arr2.length; i++){
     d[arr2[i]] = rank++;
 }
-function split_words(a) {
+function split_words(a){
     temp = []
-    for (var i = 0; i < a.length; i++) {
+    for(var i=0;i<a.length;i++){
         unicode = a.charCodeAt(i);
-        if (unicode >= 2309 && unicode <= 2361) {
+        if(unicode >= 3006 && unicode <= 3022){
             temp[temp.length - 1] += a[i]
         }
-        else {
+        else{
             temp.push(a[i])
         }
     }
     return temp
 }
 
-function compare(aa, bb) {
-    var a = aa.itemNameTamil
-    var b = bb.itemNameTamil
+function compare(aa,bb){
+    var a = aa.shopNameTamil
+    var b = bb.shopNameTamil
     a_letters = split_words(a)
     b_letters = split_words(b)
-    for (var i = 0; i < Math.min(a_letters.length, b_letters.length); i++) {
-        if (a_letters[i] != b_letters[i]) {
-            if (d[a_letters[i]] == undefined || d[b_letters[i]] == undefined) {
-                if (a_letters[i].length == 1 || b_letters[i].length == 1) {
-                    if (a_letters[i][0] == b_letters[i][0]) {
-                        var idx1 = a_letters[i].length - 1;
-                        var idx2 = b_letters[i].length - 1;
+    for(var i=0;i<Math.min(a_letters.length,b_letters.length);i++){
+        if(a_letters[i] != b_letters[i]){
+            if(d[a_letters[i]] == undefined || d[b_letters[i]] == undefined){
+                if(a_letters[i].length==1 || b_letters[i].length == 1){
+                    if(a_letters[i][0] == b_letters[i][0]){
+                        var idx1 = a_letters[i].length-1;
+                        var idx2 = b_letters[i].length-1;
                         return a_letters[i].charCodeAt(idx1) - b_letters[i].charCodeAt(idx2);
                     }
                     return d[a_letters[i][0]] - d[b_letters[i][0]]
                 }
 
-                if (a_letters[i].charCodeAt(0) == b_letters[i].charCodeAt(0)) {
-                    if (a_letters[i].charCodeAt(1) == b_letters[i].charCodeAt(1)) {
+                if(a_letters[i].charCodeAt(0) == b_letters[i].charCodeAt(0)){
+                    if(a_letters[i].charCodeAt(1) == b_letters[i].charCodeAt(1)){
                         continue;
                     }
-                    else {
-                        if (a_letters[i].charCodeAt(1) == 2361) {
+                    else{
+                        if(a_letters[i].charCodeAt(1) == 3021){
                             return -1
                         }
-                        if (b_letters[i].charCodeAt(1) == 2361) {
+                        if(b_letters[i].charCodeAt(1) == 3021){
                             return 1
                         }
                         return a_letters[i].charCodeAt(1) - b_letters[i].charCodeAt(1)
                     }
                 }
-                else {
+                else{
                     return d[a_letters[i][0]] - d[b_letters[i][0]]
                 }
             }
-            else {
+            else{
                 return d[a_letters[i]] - d[b_letters[i]]
             }
         }
