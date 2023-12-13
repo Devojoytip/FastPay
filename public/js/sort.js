@@ -24,8 +24,8 @@ function split_words(a){
 }
 
 function compare(aa,ba){
-    var a = aa.shopNameTamil
-    var b = bb.shopNameTamil
+    var a = aa.shopNameHindi
+    var b = bb.shopNameHindi
     a_letters = split_words(a)
     b_letters = split_words(b)
     for(var i=0;i<Math.min(a_letters.length,b_letters.length);i++){

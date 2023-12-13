@@ -44,10 +44,10 @@ router.get('/:id/add',ensureAuth,async (req,res) => {
 router.post('/:id/add/ok',multerMiddle('itemImage'),async (req,res) => {
     req.body.itemShop = req.params.id;
     if(req.body.translate == 'YES'){
-        const itemNameTamil = await translate(req.body.itemNameEnglish);
+        const itemNameHindi = await translate(req.body.itemNameEnglish);
         return res.render('item-translate',{
             'values' : req.body,
-            'itemNameTamil' : itemNameTamil,
+            'itemNameHindi' : itemNameHindi,
             'shopid' : req.params.id,
         });
     }
@@ -57,7 +57,7 @@ router.post('/:id/add/ok',multerMiddle('itemImage'),async (req,res) => {
     console.log(`${req.body.itemImage}`.blue.bold);
     const new_item = {
         itemNameEnglish : req.body.itemNameEnglish,
-        itemNameTamil : req.body.itemNameTamil,
+        itemNameHindi : req.body.itemNameHindi,
         itemPrice : req.body.itemPrice,
         itemQuantity : req.body.itemQuantity,
         itemShop : req.body.itemShop,

@@ -18,8 +18,8 @@ router.get('/', async (req,res) => {
         shops.sort(compare);
         res.render('shop',{
             'shops' : shops,
-            'user' : req.user.tamilName,
-            'tamilName' : req.user.tamilName,
+            'user' : req.user.HindiName,
+            'HindiName' : req.user.HindiName,
             layout:"main2"
         })
     }
@@ -35,7 +35,7 @@ router.get('/search', async (req,res) => {
         const shops = await Shop.find({owner : req.user.id}).populate('owner').lean();
         var shops2=[]
         for(var i=0;i<shops.length;i++){
-            if(shops[i].shopNameTamil.includes(req.query.search)){
+            if(shops[i].shopNameHindi.includes(req.query.search)){
                 shops2.push(shops[i]);
             }
             if(shops[i].shopNameEnglish.includes(req.query.search)){
@@ -48,8 +48,8 @@ router.get('/search', async (req,res) => {
         shops2.sort(compare);
         return res.render('shop',{
             'shops' : shops2,
-            'user' : req.user.tamilName,
-            'tamilName' : req.user.tamilName,
+            'user' : req.user.HindiName,
+            'HindiName' : req.user.HindiName,
             layout:"main2"
         })
     }
@@ -72,10 +72,10 @@ router.post('/add/ok', async (req,res) => {
     try{
         console.log(req.body);
         if(req.body.translate == 'YES'){
-            const shopNameTamil = await translate(req.body.shopNameEnglish);
+            const shopNameHindi = await translate(req.body.shopNameEnglish);
             return res.render('shop-translate',{
                 'values' : req.body,
-                'shopNameTamil' : shopNameTamil,
+                'shopNameHindi' : shopNameHindi,
                 layout:"main"
             });
         }
@@ -92,12 +92,13 @@ router.get('/explore/:id', async (req,res) => {
     try{
         const shop = await Shop.findById(req.params.id).lean();
         const items = await Item.find({'itemShop' : req.params.id}).lean();
+        console.log('items ',items)
         items.sort(compare2);
         res.render('shop-explore-1',{
             'shop' : shop,
             "items" : items,
             'user' : req.user.displayName,
-            'tamilName' : req.user.tamilName,
+            'HindiName' : req.user.HindiName,
             'shopid' : req.params.id,
             layout : 'main2'
         });
@@ -113,7 +114,7 @@ router.get('/explore/:id/search', async (req,res)=> {
         const items = await Item.find({'itemShop' : req.params.id}).lean();
         var items2 = [];
         for(var i=0;i<items.length;i++){
-            if(items[i].itemNameTamil.includes(req.query.search)){
+            if(items[i].itemNameHindi.includes(req.query.search)){
                 items2.push(items[i]);
             }
             if(items[i].itemNameEnglish.includes(req.query.search)){
@@ -128,7 +129,7 @@ router.get('/explore/:id/search', async (req,res)=> {
             'shop' : shop,
             "items" : items2,
             'user' : req.user.displayName,
-            'tamilName' : req.user.tamilName,
+            'HindiName' : req.user.HindiName,
             'shopid' : req.params.id,
             layout : 'main2'
         });
@@ -171,7 +172,7 @@ router.get('/:shopId/:cartId/search',async (req,res)=>{
         const items = await Item.find({'itemShop' : req.params.shopId}).lean();
         var items2 = [];
         for(var i=0;i<items.length;i++){
-            if(items[i].itemNameTamil.includes(req.query.search)){
+            if(items[i].itemNameHindi.includes(req.query.search)){
                 items2.push(items[i]);
             }
             if(items[i].itemNameEnglish.includes(req.query.search)){
@@ -202,7 +203,7 @@ router.get('/:shopId/:cartId/search',async (req,res)=>{
         res.render('view-items-1',{
             'shop' : shop,
             'items' : items2,
-            'user' : req.user.tamilName,
+            'user' : req.user.HindiName,
             layout : 'main2',
             'cartId' : req.params.cartId,
         })
@@ -239,7 +240,7 @@ router.get('/:id/view-items/:cartId', async (req, res) => {
         res.render('view-items-1',{
             'shop' : shop,
             'items' : items,
-            'user' : req.user.tamilName,
+            'user' : req.user.HindiName,
             layout : 'main2',
             'cartId' : req.params.cartId,
         })

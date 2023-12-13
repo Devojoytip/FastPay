@@ -25,13 +25,13 @@ module.exports = function(passport){
                 done(null,user);
             }
             else{
-                const tamilNames = await translate("My name is " + profile.displayName);
-                const tamilNameArray = tamilNames.split(" ");
-                var tamilName = "";
-                for(var i=2;i<tamilNameArray.length;i++){
-                    tamilName += tamilNameArray[i] + " ";
+                const HindiNames = await translate("My name is " + profile.displayName);
+                const HindiNameArray = HindiNames.split(" ");
+                var HindiName = "";
+                for(var i=2;i<HindiNameArray.length;i++){
+                    HindiName += HindiNameArray[i] + " ";
                 }
-                newUser.tamilName = await translate(profile.displayName, { to: 'hi' });
+                newUser.HindiName = await translate(profile.displayName, { to: 'hi' });
                 user = await User.create(newUser);
                 done(null,user);
             }

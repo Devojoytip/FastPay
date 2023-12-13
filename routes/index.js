@@ -22,7 +22,7 @@ router.get('/login',ensureGuest,(req,res) => {
 router.get('/home',ensureAuth,(req,res) => {
     console.log(req.user.emailId);
     res.render('home',{
-        'user' : req.user.tamilName,
+        'user' : req.user.HindiName,
     });
 })
 

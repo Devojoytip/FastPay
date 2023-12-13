@@ -5,7 +5,7 @@ const ItemSchema = new mongoose.Schema({
         type: 'string',
         required: true
     },
-    itemNameTamil:{
+    itemNameHindi:{
         type: 'string',
         required : true
     },

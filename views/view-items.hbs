@@ -1,4 +1,4 @@
-{{!-- <h1>नमस्ते {{user}} | {{tamilName}}</h1>
+{{!-- <h1>नमस्ते {{user}} | {{HindiName}}</h1>
 <h2> உங்கள் கடைகள் </h2> --}}
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +12,7 @@
       href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
       rel="stylesheet"
     />
-    <title>Poombuhar</title>
+    <title>FastPay</title>
 
     <style>
         /* ===== Google Font Import - Poppins ===== */
@@ -1705,7 +1705,7 @@ video {
           <div class="navi">
             
             <div id="myDropdown1" class="bg-slate-100 rounded-lg dropdown-content">
-              <a style="color: rgb(38, 38, 38)" class="font-semibold" href="#">by tamil name</a>
+              <a style="color: rgb(38, 38, 38)" class="font-semibold" href="#">by Hindi name</a>
               <a style="color: rgb(38, 38, 38)" class="font-semibold" href="#">by price</a>
             </div>
           </div>
@@ -1723,7 +1723,7 @@ video {
               <a style="color: rgb(38, 38, 38)" class="font-semibold" href="#">View orders</a>
               <a style="color: rgb(38, 38, 38)" class="font-semibold" href="#">Sign out</a>
             </div>
-            <h2>Hello नमस्ते {{user}} | {{tamilName}}</h2>
+            <h2>Hello नमस्ते {{user}} | {{HindiName}}</h2>
           </div>
         </div>
       </div>
@@ -1734,7 +1734,7 @@ video {
 {{#if items}}
     {{!-- <ul>
     {{#each items}}
-        <li>{{itemNameTamil}} | {{itemNameEnglish}}</li>
+        <li>{{itemNameHindi}} | {{itemNameEnglish}}</li>
     {{/each}}
     </ul> --}}
     <div class="head1">
@@ -1754,7 +1754,7 @@ video {
                     style="background-color: #434343;width: 20rem;background-image: url('{{itemImage}}')"></div>
                     <div>
                         <div class="flex gap-4 justify-evenly mb-3">
-                        <h1 style="margin-right: 2rem;color: #E51D2A;" class="text-purple-800 font-semibold text-center mt-4 text-xl">{{itemNameTamil}}</h1>
+                        <h1 style="margin-right: 2rem;color: #E51D2A;" class="text-purple-800 font-semibold text-center mt-4 text-xl">{{itemNameHindi}}</h1>
                         <h1 style="margin-right:2rem ;" class="text-gray-800 font-semibold text-center mt-4 text-xl">{{itemNameEnglish}}</h1>
                         </div>
                         <div class="pr-4 pb-4 pl-4 mb-4 flex flex-col items-center">
@@ -1820,13 +1820,13 @@ video {
                 style="background-color: #434343;width: 20rem;background-image: url('{{itemImage}}'); opacity: 0.4"></div>
                 <div>
                     <div class="flex gap-4 justify-evenly mb-3">
-                    <h1 style="margin-right: 2rem;color: #E51D2A;" class="text-purple-800 font-semibold text-center mt-4 text-xl">{{itemNameTamil}}</h1>
+                    <h1 style="margin-right: 2rem;color: #E51D2A;" class="text-purple-800 font-semibold text-center mt-4 text-xl">{{itemNameHindi}}</h1>
                     <h1 style="margin-right:2rem ;" class="text-gray-800 font-semibold text-center mt-4 text-xl">{{itemNameEnglish}}</h1>
                     </div>
                     <div class="pr-4 pb-4 pl-4 mb-4 flex flex-col items-center">
         
                     <div class="flex mt-3 mb-3">
-                        <p style="color:white" class="text-gray-600 font-semibold text-base text-center">company_tamil</p>
+                        <p style="color:white" class="text-gray-600 font-semibold text-base text-center">company_Hindi</p>
                         <p style="color:white" class="text-gray-600 font-semibold text-base text-center">company_english</p>
                     </div>
                     <div style="gap: 2rem;margin-top: 0.4rem;" class="flex"><p class="bg-gray-800 p-2 rounded-lg text-center text-white mt-3 mb-2 font-semibold">Rs. {{itemPrice}}</p>

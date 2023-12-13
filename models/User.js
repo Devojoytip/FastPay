@@ -9,7 +9,7 @@ const UserSchema = new mongoose.Schema({
         type: 'string',
         required: true
     },
-    tamilName:{
+    HindiName:{
         type: 'string',
         required: false,
     },

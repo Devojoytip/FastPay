@@ -1,7 +1,6 @@
 d = {}
-arr = ['अ', 'आ', 'इ', 'ई', 'उ', 'ऊ', 'ए', 'ऐ', 'ओ', 'औ', 'अं', 'अः'];
-arr2 = ['क', 'ख', 'ग', 'घ', 'ङ', 'च', 'छ', 'ज', 'झ', 'ञ', 'ट', 'ठ', 'ड', 'ढ', 'ण', 'त', 'थ', 'द', 'ध', 'न', 'प', 'फ', 'ब', 'भ', 'म', 'य', 'र', 'ल', 'व', 'श', 'ष', 'स', 'ह'];
-
+arr = ['अ','आ','इ','ई','उ','ऊ','ए','ऐ','ओ','औ','अं','अः'];
+arr2 = ['क','ख','ग','घ','ङ','च','छ','ज','झ','ञ','ट','ठ','ड','ढ','ण','त','थ','द','ध','न','प','फ','ब','भ','म','य','र','ल','व','श','ष','स','ह'];
 rank = 1
 for(var i =0; i<arr.length; i++){
     d[arr[i]] = rank++;
@@ -11,10 +10,9 @@ for(var i =0; i<arr2.length; i++){
 }
 function split_words(a){
     temp = []
-    console.log('a ',a)
     for(var i=0;i<a.length;i++){
         unicode = a.charCodeAt(i);
-        if(unicode >= 2309 && unicode <= 2360){
+        if(unicode >= 3006 && unicode <= 3022){
             temp[temp.length - 1] += a[i]
         }
         else{
@@ -25,10 +23,8 @@ function split_words(a){
 }
 
 function compare(aa,bb){
-    var a = aa.itemNameHindi
-    var b = bb.itemNameHindi
-    console.log('a ',a)
-    console.log('b ',b)
+    var a = aa.shopNameHindi
+    var b = bb.shopNameHindi
     a_letters = split_words(a)
     b_letters = split_words(b)
     for(var i=0;i<Math.min(a_letters.length,b_letters.length);i++){
@@ -48,10 +44,10 @@ function compare(aa,bb){
                         continue;
                     }
                     else{
-                        if(a_letters[i].charCodeAt(1) == 2360){
+                        if(a_letters[i].charCodeAt(1) == 3021){
                             return -1
                         }
-                        if(b_letters[i].charCodeAt(1) == 2360){
+                        if(b_letters[i].charCodeAt(1) == 3021){
                             return 1
                         }
                         return a_letters[i].charCodeAt(1) - b_letters[i].charCodeAt(1)

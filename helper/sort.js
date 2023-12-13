@@ -12,7 +12,7 @@ function split_words(a){
     temp = []
     for(var i=0;i<a.length;i++){
         unicode = a.charCodeAt(i);
-        if(unicode >= 3006 && unicode <= 3022){
+        if(unicode >= 2309 && unicode <= 2360){
             temp[temp.length - 1] += a[i]
         }
         else{
@@ -23,8 +23,8 @@ function split_words(a){
 }
 
 function compare(aa,bb){
-    var a = aa.shopNameTamil
-    var b = bb.shopNameTamil
+    var a = aa.itemNameHindi
+    var b = bb.itemNameHindi
     a_letters = split_words(a)
     b_letters = split_words(b)
     for(var i=0;i<Math.min(a_letters.length,b_letters.length);i++){
@@ -44,10 +44,10 @@ function compare(aa,bb){
                         continue;
                     }
                     else{
-                        if(a_letters[i].charCodeAt(1) == 3021){
+                        if(a_letters[i].charCodeAt(1) == 2360){
                             return -1
                         }
-                        if(b_letters[i].charCodeAt(1) == 3021){
+                        if(b_letters[i].charCodeAt(1) == 2360){
                             return 1
                         }
                         return a_letters[i].charCodeAt(1) - b_letters[i].charCodeAt(1)

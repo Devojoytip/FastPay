@@ -9,7 +9,7 @@ const ShopSchema = new mongoose.Schema({
         type: 'string',
         required: true
     },
-    shopNameTamil:{
+    shopNameHindi:{
         type: 'string',
         required : true
     },
