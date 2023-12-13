@@ -14,7 +14,7 @@ function split_words(a){
     console.log('a ',a)
     for(var i=0;i<a.length;i++){
         unicode = a.charCodeAt(i);
-        if(unicode >= 2309 && unicode <= 2360){
+        if(unicode >= 3006 && unicode <= 3022){
             temp[temp.length - 1] += a[i]
         }
         else{
@@ -48,10 +48,10 @@ function compare(aa,bb){
                         continue;
                     }
                     else{
-                        if(a_letters[i].charCodeAt(1) == 2360){
+                        if(a_letters[i].charCodeAt(1) == 3021){
                             return -1
                         }
-                        if(b_letters[i].charCodeAt(1) == 2360){
+                        if(b_letters[i].charCodeAt(1) == 3021){
                             return 1
                         }
                         return a_letters[i].charCodeAt(1) - b_letters[i].charCodeAt(1)
