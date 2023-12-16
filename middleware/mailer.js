@@ -14,4 +14,3 @@ let details ={
     subject:"ShopQ order - Regarding",
     text:"Your shopQ order at store ABC is ready for collection!",
 }
-
